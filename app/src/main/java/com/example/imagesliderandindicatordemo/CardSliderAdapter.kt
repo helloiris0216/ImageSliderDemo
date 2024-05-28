@@ -11,16 +11,17 @@ import com.google.android.material.shape.ShapeAppearanceModel
 class CardSliderAdapter(private val images: List<String>) :
     RecyclerView.Adapter<CardSliderAdapter.ViewPagerViewHolder>() {
 
-    inner class ViewPagerViewHolder(val binding: ItemCardSliderBinding) :
+    inner class ViewPagerViewHolder(private val binding: ItemCardSliderBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
         fun setData(imageUrl: String) {
             binding.imageView.apply {
-                load(imageUrl)
                 val shapeAppearanceModel = ShapeAppearanceModel.builder()
                     .setAllCorners(CornerFamily.ROUNDED, 8f)
                     .build()
                 this.shapeAppearanceModel = shapeAppearanceModel
+
+                load(imageUrl)
             }
         }
     }
